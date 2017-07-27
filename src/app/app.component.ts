@@ -11,12 +11,16 @@ export class AppComponent {
 	
 	constructor(){
 		this.articles = [ new Article("Angular 4", "http://angular.io", 3),
-						new Article("Java", "http://angular.io", 2),
-						new Article("Python", "http://angular.io", 1)
+						new Article("Java", "https://www.oracle.com/java/index.html", 2),
+						new Article("Python", "https://www.python.org/", 1)
 		];
 	}
 	
-	addArticle(title: HTMLInputElement, link: HTMLInputElement){
+	addArticle(title: HTMLInputElement, link: HTMLInputElement): boolean{
 		console.log(`Adding title : ${title.value} with link : ${link.value}`);
+		this.articles.push(new Article(title.value, link.value, 0));
+		title.value = '';
+		link.value = '';
+		return false;
 	}
 }
